@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: eth
+    description: "This is the source for the Etherium Project data models."
+    database: "eth"
+    schema: "eth_schema"
+    tables:
+      - name: contracts
+        description: "This table contains all the smart contracts deployed on the Ethereum blockchain."
+      - name: token_transfers
+        description: "This table contains all the token transfers on the Ethereum blockchain."
+      - name: transactions
+        description: "This table contains all the transactions on the Ethereum blockchain."
