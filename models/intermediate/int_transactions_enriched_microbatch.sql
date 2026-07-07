@@ -5,8 +5,7 @@
         event_time='date',
         begin='2026-06-01',
         batch_size='day',
-        unique_key='hash',
-        concurrent_batches=false
+        unique_key='hash'
     )
 }}
 
