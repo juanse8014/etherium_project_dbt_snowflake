@@ -1,4 +1,9 @@
-{{ config(materialized='ephemeral') }}
+{{
+    config(
+        materialized='view',   
+        event_time='date'       
+    )
+}}
 
 select
     transaction_hash,

@@ -2,7 +2,8 @@
     config(
         materialized='incremental',
         incremental_strategy='merge',
-        unique_key='hash'
+        unique_key='hash',
+        event_time='date' 
     )
 }}
 
