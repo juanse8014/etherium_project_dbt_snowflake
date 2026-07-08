@@ -32,5 +32,6 @@ models:
   etherium_project:
     # Config indicated by + and applies to all files under models/example/
     +materialized: table
+    +tags: ['crypto']
     
 

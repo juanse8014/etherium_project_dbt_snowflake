@@ -1,3 +1,6 @@
+{{ config(
+    tags=['stablecoin']
+) }}
 select
     t.date,
     t.token_address,

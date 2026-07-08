@@ -1,3 +1,7 @@
+{{ config(
+    tags=['eth']
+) }}
+
 select
     date, 
     transaction_category,
