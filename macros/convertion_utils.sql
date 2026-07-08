@@ -9,3 +9,9 @@ sum({{ column_name }}/1e18)
 sum({{ column_name }}/1e16)
 
 {% endmacro%}
+
+{% macro convertion(column_name, factor) %}
+
+sum({{ column_name }}/power(10, {{ factor }}))
+
+{% endmacro%}

@@ -1,7 +1,6 @@
 {% macro random_macro() %}
 
 {# If you don't put info=True in the function, it will be printed in the dbt.log file, but not in console. #}
-{{ log('Hello', info=True) }} 
 
 {% set query %}
 select
@@ -19,7 +18,6 @@ limit 10
 {% set result_list = [] %}
 {% endif %}
 
-{{ log(result_list, info=True) }} 
 
 {# We also can return the output of the macro #}
 {{ return(result_list) }}
