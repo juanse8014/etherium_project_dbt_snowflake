@@ -3,7 +3,7 @@
         materialized='incremental',
         incremental_strategy='microbatch',
         event_time='date',
-        begin='2026-06-01',
+        begin=var('begin_date'),
         batch_size='day',
         unique_key='hash'
     )

@@ -41,5 +41,5 @@ enriched as (
 select * from enriched
 
 {% if is_incremental() %}
-    where date > (select max(date) from {{ this }})
+    where t.date > (select max(t.date) from {{ this }})
 {% endif %}

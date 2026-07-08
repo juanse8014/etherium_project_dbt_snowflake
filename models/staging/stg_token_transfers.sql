@@ -6,5 +6,5 @@ select
 from {{ source('eth', 'token_transfers') }}
 
 {% if target.name != 'prod' %}
-    where date >= '2026-06-01'
+    where date >= '{{ var('begin_date') }}'
 {% endif %}

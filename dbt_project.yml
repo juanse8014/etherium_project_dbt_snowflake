@@ -34,4 +34,5 @@ models:
     +materialized: table
     +tags: ['crypto']
     
-
+vars:
+  begin_date: '2026-06-01'

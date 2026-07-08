@@ -22,6 +22,6 @@ from {{ source('eth', 'transactions') }}
     where date >= (select max(date) from {{ this }})
 
 {% else %}
-    where date >= '2026-06-01'
+    where date >= '{{ var('begin_date') }}'
 
 {% endif %}

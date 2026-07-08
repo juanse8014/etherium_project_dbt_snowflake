@@ -41,5 +41,5 @@ enriched as (
 select * from enriched
 
 {% if is_incremental() %}
-    where date >= dateadd(day, -3, (select max(date) from {{ this }}))
+    where t.date >= dateadd(day, -3, (select max(t.date) from {{ this }}))
 {% endif %}
