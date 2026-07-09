@@ -36,3 +36,7 @@ models:
     
 vars:
   begin_date: '2026-06-01'
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['etherium_project', 'dbt_utils']
