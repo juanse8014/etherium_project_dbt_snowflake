@@ -57,3 +57,5 @@ sources:
           - name: transaction_index
           - name: transaction_type
           - name: value
+          
+      - name: contracts_clone
