@@ -1,4 +1,4 @@
-import holidays
+import holidaysd
 
 def is_holiday(date_col):
     french_holidays = holidays.France()
