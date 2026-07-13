@@ -2,9 +2,11 @@ version: 2
 
 models:
   - name: stablecoin_activity_per_day
+    latest_version: 1
     config:
       contract:
         enforced: true # Model protected by contract
+        alias_types: true # Use alias types for columns
     columns:
       - name: date
         data_type: date
@@ -13,11 +15,21 @@ models:
         data_type: varchar
 
       - name: type
-        data_type: varchar
+        data_type: string
 
       - name: symbol
         data_type: varchar
 
       - name: total_usd_value
         data_type: float
-
+    # Declare the versions, and highlight the diffs
+    versions:
+      - v: 1
+        # Matches what's above -- nothing more needed
+      - v: 2
+        # Removed a column -- this is the breaking change!
+        columns:
+          # This means: use the 'columns' list from above, but exclude country_name
+          - include: all
+            exclude: [token_address, symbol]
+      
