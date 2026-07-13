@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stablecoin_activity_per_day
-    latest_version: 1
+    latest_version: 2
     config:
       contract:
         enforced: true # Model protected by contract
@@ -25,6 +25,7 @@ models:
     # Declare the versions, and highlight the diffs
     versions:
       - v: 1
+        deprecation_date: 2027-01-01
         # Matches what's above -- nothing more needed
       - v: 2
         # Removed a column -- this is the breaking change!
