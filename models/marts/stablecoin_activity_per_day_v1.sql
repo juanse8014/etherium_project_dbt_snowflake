@@ -1,5 +1,6 @@
 {{ config(
-    tags=['stablecoin']
+    tags=['stablecoin'],
+    grants = {'select': ['PUBLIC']}
 ) }}
 select
     t.date,

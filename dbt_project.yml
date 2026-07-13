@@ -33,6 +33,16 @@ models:
     # Config indicated by + and applies to all files under models/example/
     +materialized: table
     +tags: ['crypto']
+    marts:
+      +materialized: table
+      stablecoin_activity_per_day:
+        +post-hook:
+          - GRANT USAGE ON DATABASE DBT TO ROLE PUBLIC;
+          - GRANT USAGE ON SCHEMA DBT.DBT_SNAVARRETE TO ROLE PUBLIC;
     
 vars:
   begin_date: '2026-06-01'
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['etherium_project', 'dbt_utils']

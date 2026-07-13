@@ -2,13 +2,60 @@ version: 2
 
 sources:
   - name: eth
-    description: "This is the source for the Etherium Project data models."
     database: "eth"
     schema: "eth_schema"
+    description: "This is the source for the Etherium Project data models."
     tables:
       - name: contracts
         description: "This table contains all the smart contracts deployed on the Ethereum blockchain."
+        columns:
+          - name: address
+          - name: block_hash
+          - name: block_number
+          - name: block_timestamp
+          - name: bytecode
+          - name: date
+          - name: last_modified
+
       - name: token_transfers
         description: "This table contains all the token transfers on the Ethereum blockchain."
+        columns:
+          - name: block_hash
+          - name: block_number
+          - name: block_timestamp
+          - name: date
+          - name: from_address
+          - name: to_address
+          - name: last_modified
+          - name: log_index
+          - name: token_address
+          - name: transaction_hash
+          - name: value
+
       - name: transactions
         description: "This table contains all the transactions on the Ethereum blockchain."
+        columns:
+          - name: block_hash
+          - name: block_number
+          - name: block_timestamp
+          - name: date
+          - name: from_address
+          - name: gas
+          - name: gas_price
+          - name: hash
+          - name: input
+          - name: last_modified
+          - name: max_fee_per_gas
+          - name: max_priority_fee_per_gas
+          - name: nonce
+          - name: receipt_contract_address
+          - name: receipt_cumulative_gas_used
+          - name: receipt_effective_gas_price
+          - name: receipt_gas_used
+          - name: receipt_status
+          - name: to_address
+          - name: transaction_index
+          - name: transaction_type
+          - name: value
+          
+      - name: contracts_clone
