@@ -1,13 +1,13 @@
 etherium_project:
   outputs:
     ci:
-      account: BHBJMVS-ALC03841
+      account: "{{ env_var('DBT_SNOWFLAKE_IDENTIFIER') }}"
       database: DBT_CI
       private_key_path: "{{ env_var('DBT_PRIVATE_KEY_PATH') }}"
-      role: SYSADMIN
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}"
       schema: DBT_SNAVARRETE
       threads: 1
       type: snowflake
-      user: SEBASTIANNAVARRETE
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
       warehouse: COMPUTE_WH 
   target: ci
