@@ -3,10 +3,10 @@ groups:
     description: "Analytics Engineers"
     owner:
       name: "Sebastian Navarrete"
-      email: snavarrete@dbt.com"
+      email: "snavarrete@dbt.com"
   
   - name: fraud_risk
     description: "Fraud Risk Analysts"
     owner:
       name: "John Doe"
-      email: jdoe@dbt.com"
+      email: "jdoe@dbt.com"
