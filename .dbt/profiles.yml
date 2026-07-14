@@ -1,0 +1,13 @@
+etherium_project:
+  outputs:
+    ci:
+      account: BHBJMVS-ALC03841
+      database: DBT_CI
+      private_key_path: "{{ env_var('DBT_PRIVATE_KEY_PATH') }}"
+      role: SYSADMIN
+      schema: DBT_SNAVARRETE
+      threads: 1
+      type: snowflake
+      user: SEBASTIANNAVARRETE
+      warehouse: COMPUTE_WH 
+  target: ci

@@ -41,7 +41,7 @@ models:
           - GRANT USAGE ON SCHEMA DBT.DBT_SNAVARRETE TO ROLE PUBLIC;
     
 vars:
-  begin_date: '2026-06-01'
+  begin_date: '2026-07-01'
 
 dispatch:
   - macro_namespace: dbt_utils
