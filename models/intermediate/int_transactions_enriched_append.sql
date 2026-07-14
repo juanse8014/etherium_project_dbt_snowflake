@@ -1,7 +1,7 @@
-{{ 
+{{
     config(materialized='incremental',
     incremental_strategy='append'
-) }} 
+) }}
 
 select
     t.hash,
@@ -30,6 +30,6 @@ left join {{ ref('int_token_transfer_agg') }} as tt on t.hash = tt.transaction_h
 
 -- Note: The SQL in your model needs to be valid whether is incremental() evalueates to true or false.
 
-where t.date >= (select max(t.date) from {{ this }}) 
+where t.date >= (select max(inc.date) from {{ this }} as inc)
 
-{% endif %} 
+{% endif %}

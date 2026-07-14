@@ -38,8 +38,8 @@ enriched as (
         on t.hash = tt.transaction_hash
 )
 
-select * from enriched
+select * from enriched as e
 
 {% if is_incremental() %}
-    where t.date > (select max(t.date) from {{ this }})
+    where e.date > (select max(inc.date) from {{ this }} as inc)
 {% endif %}

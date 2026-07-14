@@ -1,12 +1,10 @@
 groups:
   - name: analytics_engineers
-    description: "Analytics Engineers"
     owner:
       name: "Sebastian Navarrete"
-      email: snavarrete@example.com"
+      email: snavarrete@dbt.com
   
   - name: fraud_risk
-    description: "Fraud Risk Analysts"
     owner:
       name: "John Doe"
-      email: jdoe@example.com"
+      email: jdoe@dbt.com
