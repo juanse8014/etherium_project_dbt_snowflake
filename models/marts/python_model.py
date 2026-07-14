@@ -12,7 +12,7 @@ def model(dbt, session):
         packages=["holidays"]
     )
 
-    my_sql_model_df = dbt.ref("stablecoin_activity_per_day", v=1)
+    my_sql_model_df = dbt.ref("stablecoin_activity_per_day", v=2)
     my_sql_model_df = my_sql_model_df.to_pandas()
     my_sql_model_df["is_holiday"] = my_sql_model_df["DATE"].apply(is_holiday)
 
