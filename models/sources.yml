@@ -5,6 +5,12 @@ sources:
     database: "eth"
     schema: "eth_schema"
     description: "{{ doc('eth_source') }}"
+    config:
+      freshness:
+        warn_after: {count: 40, period: day}
+        error_after: {count: 100, period: day}
+        filter: "date >= '2025-01-01'"
+      loaded_at_field: to_timestamp(date)
     tables:
       - name: contracts
         description: "{{ doc('eth_contracts') }}"
