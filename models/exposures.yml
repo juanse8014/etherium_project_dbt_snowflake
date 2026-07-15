@@ -1,0 +1,10 @@
+exposures:
+  - name: eth_activity_per_day
+    type: dashboard
+
+    depends_on:
+      - ref('int_transactions_enriched_append')
+
+    owner:
+      name: "Sebastian Navarrete"
+      email: snavarrete@example.com
