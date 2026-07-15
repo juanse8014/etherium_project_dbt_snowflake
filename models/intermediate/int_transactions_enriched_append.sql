@@ -18,7 +18,8 @@ select
         when tt.transaction_hash is not null then 'token_transfer'
         when t.input = '0x' and t.value > 0 then 'plain_transfer'
         else 'other'
-    end as transaction_category
+    end as transaction_category,
+    current_timestamp() as updated_at
 from {{ ref('stg_transactions') }} as t
 left join {{ ref('int_token_transfer_agg') }} as tt on t.hash = tt.transaction_hash
 
