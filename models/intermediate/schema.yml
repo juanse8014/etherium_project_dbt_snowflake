@@ -6,3 +6,31 @@ models:
       - name: value
         data_tests:
           - assert_value_amount_positive
+unit_tests:
+  - name: test_transaction_category_classification
+    model: int_transactions_enriched_append
+    overrides:
+      macros:
+        is_incremental: false
+    given:
+      - input: ref('stg_transactions')
+        rows:
+          # Caso 1: contract_creation -> tiene receipt_contract_address
+          - {hash: '0x1', block_number: 100, date: '2024-01-01', from_address: '0xA', to_address: null, value: 0, receipt_contract_address: '0xC1', input: '0x123'}
+          # Caso 2: token_transfer -> hace match en int_token_transfer_agg
+          - {hash: '0x2', block_number: 101, date: '2024-01-01', from_address: '0xA', to_address: '0xB', value: 0, receipt_contract_address: null, input: '0xa9059cbb'}
+          # Caso 3: plain_transfer -> input = '0x' y value > 0
+          - {hash: '0x3', block_number: 102, date: '2024-01-01', from_address: '0xA', to_address: '0xB', value: 10, receipt_contract_address: null, input: '0x'}
+          # Caso 4: other -> no cumple ninguna condición anterior
+          - {hash: '0x4', block_number: 103, date: '2024-01-01', from_address: '0xA', to_address: '0xB', value: 0, receipt_contract_address: null, input: '0x'}
+
+      - input: ref('int_token_transfer_agg')
+        rows:
+          - {transaction_hash: '0x2', token_transfers_count: 1}
+
+    expect:
+      rows:
+        - {hash: '0x1', transaction_category: 'contract_creation'}
+        - {hash: '0x2', transaction_category: 'token_transfer'}
+        - {hash: '0x3', transaction_category: 'plain_transfer'}
+        - {hash: '0x4', transaction_category: 'other'}
