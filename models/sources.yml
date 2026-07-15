@@ -4,10 +4,10 @@ sources:
   - name: eth
     database: "eth"
     schema: "eth_schema"
-    description: "This is the source for the Etherium Project data models."
+    description: "{{ doc('eth_source') }}"
     tables:
       - name: contracts
-        description: "This table contains all the smart contracts deployed on the Ethereum blockchain."
+        description: "{{ doc('eth_contracts') }}"
         columns:
           - name: address
           - name: block_hash
@@ -18,7 +18,7 @@ sources:
           - name: last_modified
 
       - name: token_transfers
-        description: "This table contains all the token transfers on the Ethereum blockchain."
+        description: "{{ doc('eth_token_transfers') }}"
         columns:
           - name: block_hash
           - name: block_number
@@ -33,7 +33,7 @@ sources:
           - name: value
 
       - name: transactions
-        description: "This table contains all the transactions on the Ethereum blockchain."
+        description: "{{ doc('eth_transactions') }}"
         columns:
           - name: block_hash
           - name: block_number
@@ -57,5 +57,6 @@ sources:
           - name: transaction_index
           - name: transaction_type
           - name: value
-          
+
       - name: contracts_clone
+        description: "{{ doc('eth_contracts_clone') }}"

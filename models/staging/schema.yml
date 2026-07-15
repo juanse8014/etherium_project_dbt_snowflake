@@ -9,6 +9,15 @@ models:
         data_tests:
           - not_null
           - unique
+          # - relationships:
+          #     arguments:
+          #       to: ref('stg_token_transfers')
+          #       field: transaction_hash
+          #       severity: warn
+          #       config:
+          #         store_failures: true
+          #         store_failures_as: table
+          #         where: date >= current_date - 30
   - name: stg_token_transfers
     description: "Staging table for token transfers data"
     columns:
