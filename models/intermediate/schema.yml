@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: int_transactions_enriched_append
+    columns:
+      - name: value
+        data_tests:
+          - assert_value_amount_positive
