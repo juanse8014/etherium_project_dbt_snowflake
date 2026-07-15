@@ -1,0 +1,28 @@
+snapshots:
+  - name: airbnb_snaphot_timestamp                    # Required: unique name for the snapshot
+    relation: source('airbnb', 'apartment_listings')  # Required: source table or model to snapshot
+    config:
+      schema: snapshots                               # Optional: target schema where the snapshot table will be created (<default_schema>_<schema_here>)
+      strategy: timestamp                             # Required: 'timestamp' or 'check'
+      unique_key: listing_id                          # Required: column that uniquely identifies each row
+      updated_at: updated_at                          # Required when strategy is 'timestamp': column used to detect changes
+      dbt_valid_to_current: "to_date('1900-01-01')"   # Optional: default is null. Value assigned to dbt_valid_to for active records
+                                                      # (records that have not been closed/expired yet)
+      hard_deletes: 'new_record'                      # Optional: defines behavior when a record is deleted from the source
+                                                      # - 'ignore' (default): deleted records are left as-is, dbt_valid_to remains null
+                                                      # - 'invalidate': sets dbt_valid_to to the current timestamp on deleted records
+                                                      # - 'new_record': inserts a new row marking the deletion with dbt_scd_id and dbt_valid_to populated
+
+  - name: airbnb_snaphot_check                        # Required: unique name for the snapshot
+    relation: source('airbnb', 'apartment_listings')  # Required: source table or model to snapshot
+    config:
+      schema: snapshots                               # Optional: target schema where the snapshot table will be created (<default_schema>_<schema_here>)
+      strategy: check                                 # Required: 'check' compares column values instead of a timestamp
+      unique_key: listing_id                          # Required: column that uniquely identifies each row
+      check_cols: 'all'                               # Required when strategy is 'check': columns to monitor for changes
+                                                      # - 'all': monitors every column in the source
+                                                      # - ['col1', 'col2']: monitors only the specified columns
+      hard_deletes: 'new_record'                      # Optional: defines behavior when a record is deleted from the source
+                                                      # - 'ignore' (default): deleted records are left as-is, dbt_valid_to remains null
+                                                      # - 'invalidate': sets dbt_valid_to to the current timestamp on deleted records
+                                                      # - 'new_records': inserts a new row marking the deletion with dbt_scd_id and dbt_valid_to populated

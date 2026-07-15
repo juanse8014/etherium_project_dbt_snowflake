@@ -66,3 +66,9 @@ sources:
 
       - name: contracts_clone
         description: "{{ doc('eth_contracts_clone') }}"
+
+  - name: airbnb
+    database: "airbnb"
+    schema: "airbnb"
+    tables:
+      - name: apartment_listings
