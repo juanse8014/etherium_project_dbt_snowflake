@@ -14,7 +14,7 @@ snapshots:
                                                       # - 'new_record': inserts a new row marking the deletion with dbt_scd_id and dbt_valid_to populated
 
   - name: airbnb_snaphot_check                        # Required: unique name for the snapshot
-    relation: source('airbnb', 'apartment_listings')  # Required: source table or model to snapshot
+    relation: ref('stg_apartment_listings')  # Required: source table or model to snapshot
     config:
       schema: snapshots                               # Optional: target schema where the snapshot table will be created (<default_schema>_<schema_here>)
       strategy: check                                 # Required: 'check' compares column values instead of a timestamp
